@@ -1345,7 +1345,7 @@ def flex_shell(session, serial=0):
     ##
     ## Show list of windows, or assign selected window
     ##
-    if serial is 0:
+    if serial == 0:
         cmd_list(fpp)
     else:
         flexmenu_index[0] = serial
