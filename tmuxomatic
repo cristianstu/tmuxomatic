@@ -2216,7 +2216,7 @@ def tmuxomatic( program_cli, full_cli, user_wh, session_name, session, active_se
     last_window = ""        # Recent "new-window" (changed to "select-window" on save)
     last_pane = ""          # Recent "select-pane" (unmodified)
     list_commands = [ cmd for cmdlist in list_execution for cmd in cmdlist ]
-    semicolon = " \; "
+    semicolon = " \\; "
     switch_back = semicolon + switch_back
     batch = ""
     def execute(batch, switch_back):
