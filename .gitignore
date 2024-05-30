@@ -5,3 +5,6 @@
 
 # build files
 /build/
+
+# cache files
+/windowgram/__pycache__/
