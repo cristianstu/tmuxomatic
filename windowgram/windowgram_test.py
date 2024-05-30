@@ -157,7 +157,7 @@ class SenseTestCase(unittest.TestCase):
         for ix, (command, windowgram) in enumerate( zip( commands, windowgramgroup_list ) ):
             errors = flex_processor( wg, command, noticesok )
             self.assertTrue( not errors, errors )
-            self.assertTrue( wg.Export_String() == windowgram, 
+            self.assertTrue( wg.Export_String() == windowgram,
                 "The resulting windowgram for sequence #" + str(ix+1) + " does not match: \n\n" + wg.Export_String() )
             wlist.append( wg.Export_String() )
         pattern_produced = WindowgramGroup_Convert.List_To_Pattern( \
@@ -634,22 +634,22 @@ class Test_FlexCores(SenseTestCase):
         """ )
         status, axis, minimal, optimal = edgecore( wg, "5", "right" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "v" )
+        self.assertTrue( axis == "v" )
         self.assertTrue( minimal == [ [6, 1, 3] ] )
         self.assertTrue( optimal == [ [6, 1, 3] ] )
         status, axis, minimal, optimal = edgecore( wg, "0", "left" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "v" )
+        self.assertTrue( axis == "v" )
         self.assertTrue( minimal == [ [0, 0, 1] ] )
         self.assertTrue( optimal == [ [0, 0, 1] ] )
         status, axis, minimal, optimal = edgecore( wg, "8", "bottom" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "h" )
+        self.assertTrue( axis == "h" )
         self.assertTrue( minimal == [ [6, 3, 6] ] )
         self.assertTrue( optimal == [ [6, 3, 6] ] )
         status, axis, minimal, optimal = edgecore( wg, "1", "top" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "h" )
+        self.assertTrue( axis == "h" )
         self.assertTrue( minimal == [ [0, 1, 3] ] )
         self.assertTrue( optimal == [ [0, 1, 3] ] )
 
@@ -676,7 +676,7 @@ class Test_FlexCores(SenseTestCase):
         """ )
         status, axis, minimal, optimal = edgecore( wg, "12" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "v" )
+        self.assertTrue( axis == "v" )
         self.assertTrue( minimal == [ [3, 1, 2] ] )
         self.assertTrue( optimal == [ [3, 1, 2] ] )
         wg = Windowgram( """
@@ -689,7 +689,7 @@ class Test_FlexCores(SenseTestCase):
         """ )
         status, axis, minimal, optimal = edgecore( wg, "12" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "v" )
+        self.assertTrue( axis == "v" )
         self.assertTrue( minimal == [ [3, 2, 3] ] )
         self.assertTrue( optimal == [ [3, 0, 5] ] )
         wg = Windowgram( """
@@ -702,7 +702,7 @@ class Test_FlexCores(SenseTestCase):
         """ )
         status, axis, minimal, optimal = edgecore( wg, "12" )
         self.assertTrue( status is EdgeStatus.Valid )
-        self.assertTrue( axis is "v" )
+        self.assertTrue( axis == "v" )
         self.assertTrue( minimal == [ [3, 2, 3] ] )
         self.assertTrue( optimal == [ [3, 1, 4] ] )
 
@@ -710,11 +710,11 @@ class Test_FlexCores(SenseTestCase):
 
     def test_SmudgeCore_Basic(self):
         wg_i = Windowgram( """
-            12345 
-            abcde 
-            fghij 
-            ABCDE 
-            FGHIJ 
+            12345
+            abcde
+            fghij
+            ABCDE
+            FGHIJ
         """ )
         group_o = """
             2345 11345 1234 12355
@@ -723,11 +723,11 @@ class Test_FlexCores(SenseTestCase):
             BCDE AACDE ABCD ABCEE
             GHIJ FFHIJ FGHI FGHJJ
 
-            abcde 12345 12345 12345 
-            fghij 12345 abcde abcde 
-            ABCDE fghij fghij fghij 
-            FGHIJ ABCDE ABCDE FGHIJ 
-                  FGHIJ       FGHIJ 
+            abcde 12345 12345 12345
+            fghij 12345 abcde abcde
+            ABCDE fghij fghij fghij
+            FGHIJ ABCDE ABCDE FGHIJ
+                  FGHIJ       FGHIJ
 
             345 12345 123 12555
             cde abcde abc abeee
@@ -735,11 +735,11 @@ class Test_FlexCores(SenseTestCase):
             CDE AAADE ABC ABCDE
             HIJ FFFIJ FGH FGHIJ
 
-            fghij 12345 12345 12345 
-            ABCDE ab345 abcde abcde 
-            FGHIJ fg345 fghij FGHij 
-                  ABCDE       FGHDE 
-                  FGHIJ       FGHIJ 
+            fghij 12345 12345 12345
+            ABCDE ab345 abcde abcde
+            FGHIJ fg345 fghij FGHij
+                  ABCDE       FGHDE
+                  FGHIJ       FGHIJ
         """
         wg_o_list = WindowgramGroup_Convert.Pattern_To_List( group_o )
         wg_x_list = [
@@ -2198,6 +2198,3 @@ class Test_ReadmeDemonstrations(SenseTestCase):
             zzzzzzzzzzzzzbbbbbbbbddddddddllllllll zzzzzzzzzzzzzbbbbbbbbbbddddddddddllllllllll
             zzzzzzzzzzzzzbbbbbbbbddddddddllllllll zzzzzzzzzzzzzbbbbbbbbbbddddddddddllllllllll
         """ )
-
-
-
